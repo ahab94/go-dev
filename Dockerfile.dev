@@ -1,0 +1,13 @@
+FROM golang:1.16
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        gettext-base \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV GO111MODULE=on
+
+RUN go get github.com/golangci/golangci-lint/cmd/golangci-lint \
+    && go get golang.org/x/tools/cmd/goimports
+
+RUN CGO_ENABLED=0
+
