@@ -7,3 +7,6 @@ quiet: # this is silly but shuts up 'Nothing to be done for `local`'
 
 build:
 	@docker build -t ${DEV_IMAGE} -f Dockerfile.dev .
+
+publish: build
+	@docker push ${DEV_IMAGE}
